@@ -10,5 +10,73 @@ E.	Si el importe final con descuento suma más de $120  se debe sumar un 10% de 
  */
 function CalcularPrecio () 
 {
+	var precioLampara;
+	var precioFinal;
+	var precioDescuento;
+	var cantLamparas;
+	var marcaLampara;
+
+	precioLampara = 35;
+	cantLamparas = txtIdCantidad.value;
+	cantLamparas = parseInt(cantLamparas);
+	marcaLampara = Marca.value;
+	precioFinal = precioLampara * cantLamparas;
+
+	if (cantLamparas > 5) {
+		precioDescuento = precioFinal * 0.5;
+	} 
+	else
+	{
+		if (cantLamparas == 5) 
+		{
+			if(marcaLampara == "ArgentinaLuz"){
+				precioDescuento = precioFinal * 0.6;
+			}
+			else
+			{
+				precioDescuento = precioFinal * 0.7;
+			}
+		}
+		else
+		{
+			if (cantLamparas == 4) {
+				if (marcaLampara == "ArgentinaLuz" || marcaLampara == "FelipeLamparas") {
+					precioDescuento = precioFinal * 0.75;
+				}
+				else 
+				{
+					precioDescuento = precioFinal * 0.8;
+				}
+			}
+			else
+			{
+				if (cantLamparas == 3) {
+					if (marcaLampara == "ArgentinaLuz") {
+						precioDescuento = precioFinal * 0.85;
+					}
+					else
+					{
+						if (marcaLampara == "FelipeLamparas") {
+							precioDescuento = precioFinal * 0.90;
+						}
+						else
+						{
+							precioDescuento = precioFinal * 0.95;
+						}
+					}
+				}
+			}
+		} 
+	}
+
+	var ingresosBrutos;
+
+	if (precioDescuento > 120) {
+		ingresosBrutos = precioDescuento * 0.1;
+		precioDescuento = precioDescuento + ingresosBrutos;
+
+		alert("IIBB Usted pago: " + precioDescuento + ", siendo " + ingresosBrutos + " el impuesto que se pagó.");
+	}
+	txtIdprecioDescuento.value = precioDescuento;
  	
 }
