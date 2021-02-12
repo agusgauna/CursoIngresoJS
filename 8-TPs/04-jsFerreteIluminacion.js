@@ -13,6 +13,7 @@ function CalcularPrecio ()
 	var precioLampara;
 	var precioFinal;
 	var precioDescuento;
+	var descuento;
 	var cantLamparas;
 	var marcaLampara;
 
@@ -23,51 +24,53 @@ function CalcularPrecio ()
 	precioFinal = precioLampara * cantLamparas;
 
 	if (cantLamparas > 5) {
-		precioDescuento = precioFinal * 0.5;
+		descuento = 0.5;
 	} 
 	else
 	{
 		if (cantLamparas == 5) 
 		{
 			if(marcaLampara == "ArgentinaLuz"){
-				precioDescuento = precioFinal * 0.6;
+				descuento = 0.6;
 			}
 			else
 			{
-				precioDescuento = precioFinal * 0.7;
+				descuento = 0.7;
 			}
 		}
 		else
 		{
 			if (cantLamparas == 4) {
 				if (marcaLampara == "ArgentinaLuz" || marcaLampara == "FelipeLamparas") {
-					precioDescuento = precioFinal * 0.75;
+					descuento = 0.75;
 				}
 				else 
 				{
-					precioDescuento = precioFinal * 0.8;
+					descuento = 0.8;
 				}
 			}
 			else
 			{
 				if (cantLamparas == 3) {
 					if (marcaLampara == "ArgentinaLuz") {
-						precioDescuento = precioFinal * 0.85;
+						descuento = 0.85;
 					}
 					else
 					{
 						if (marcaLampara == "FelipeLamparas") {
-							precioDescuento = precioFinal * 0.90;
+							descuento = 0.90;
 						}
 						else
 						{
-							precioDescuento = precioFinal * 0.95;
+							descuento = 0.95;
 						}
 					}
 				}
 			}
 		} 
 	}
+
+	precioDescuento = precioFinal * descuento;
 
 	var ingresosBrutos;
 
@@ -78,5 +81,5 @@ function CalcularPrecio ()
 		alert("IIBB Usted pago: " + precioDescuento + ", siendo " + ingresosBrutos + " el impuesto que se pagó.");
 	}
 	txtIdprecioDescuento.value = precioDescuento;
- 	
+	
 }
